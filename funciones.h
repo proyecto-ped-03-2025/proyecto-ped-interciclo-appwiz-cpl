@@ -145,5 +145,23 @@ void listaJugadores() //Funcion para mostrar listado de jugadores inscritos
 
         pausa();
     }
+
+      void liberarMemoria() //Función para liberar memoria
+    {
+        if (!primero)
+            return;
+
+        NodoJugador *actual = primero->sig;
+
+        while (actual != primero)
+        {
+            NodoJugador *temp = actual;
+            actual = actual->sig;
+            delete temp;
+        }
+
+        delete primero;
+        primero = NULL;
+    }
 };
 #endif
