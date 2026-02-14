@@ -84,9 +84,11 @@ public:
         return "Tijera";
     }
 
-void inscribirJugador() //Función para inscribir jugadores
+void inscribirJugador() //Función para inscribir jugadores en la lista circular
 {
     char opcion;
+
+    cin.ignore();  
 
     do
     {
@@ -137,7 +139,7 @@ void inscribirJugador() //Función para inscribir jugadores
 
         cout << "\nDesea agregar otro jugador? (s/n): ";
         cin >> opcion;
-        cin.ignore();  // solo aquí
+        cin.ignore();  
 
     } while (opcion == 's' || opcion == 'S');
 
@@ -189,4 +191,5 @@ void listaJugadores() //Funcion para mostrar listado de jugadores inscritos
         primero = NULL;
     }
 };
+
 #endif
