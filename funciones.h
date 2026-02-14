@@ -110,7 +110,14 @@ void inscribirJugador() //Función para inscripción de jugadores
 
             cout << "Ingrese el ID del jugador: ";
             cin >> nuevo->id;
-
+            
+             if (idExiste(nuevo->id))
+            {
+                cout << "ID ya existente.\n";
+                delete nuevo;
+                pausa();
+                return;
+            }
             nuevo->puntos = 0;
 
             if (!primero)
