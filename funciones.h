@@ -22,7 +22,7 @@ class GamePPT
 private:
     NodoJugador *primero;
 
-     bool idExiste(string idBuscado)
+    bool idExiste(string idBuscado)
     {
         if (!primero)
             return false;
@@ -84,69 +84,69 @@ public:
         return "Tijera";
     }
 
-void inscribirJugador() //Función para inscribir jugadores en la lista circular
-{
-    char opcion;
-
-    cin.ignore();  
-
-    do
+    void inscribirJugador() // Función para inscribir jugadores en la lista circular
     {
-        limpiar();
-        cout << "INSCRIPCION DE JUGADORES\n";
-        cout << "========================\n";
+        char opcion;
 
-        NodoJugador *nuevo = new NodoJugador;
+        cin.ignore();
 
-        cout << "Ingrese el nombre del jugador: ";
-        getline(cin, nuevo->nombre);
-
-        if (nuevo->nombre.empty())
+        do
         {
-            cout << "Nombre invalido.\n";
-            delete nuevo;
-            pausa();
-            return;
-        }
+            limpiar();
+            cout << "INSCRIPCION DE JUGADORES\n";
+            cout << "========================\n";
 
-        cout << "Ingrese el ID del jugador: ";
-        cin >> nuevo->id;
+            NodoJugador *nuevo = new NodoJugador;
 
-        if (idExiste(nuevo->id))
-        {
-            cout << "ID ya existente.\n";
-            delete nuevo;
-            pausa();
-            return;
-        }
+            cout << "Ingrese el nombre del jugador: ";
+            getline(cin, nuevo->nombre);
 
-        nuevo->puntos = 0;
+            if (nuevo->nombre.empty())
+            {
+                cout << "Nombre invalido.\n";
+                delete nuevo;
+                pausa();
+                return;
+            }
 
-        if (!primero)
-        {
-            primero = nuevo;
-            nuevo->sig = primero;
-        }
-        else
-        {
-            NodoJugador *aux = primero;
-            while (aux->sig != primero)
-                aux = aux->sig;
+            cout << "Ingrese el ID del jugador: ";
+            cin >> nuevo->id;
 
-            aux->sig = nuevo;
-            nuevo->sig = primero;
-        }
+            if (idExiste(nuevo->id))
+            {
+                cout << "ID ya existente.\n";
+                delete nuevo;
+                pausa();
+                return;
+            }
 
-        cout << "\nDesea agregar otro jugador? (s/n): ";
-        cin >> opcion;
-        cin.ignore();  
+            nuevo->puntos = 0;
 
-    } while (opcion == 's' || opcion == 'S');
+            if (!primero)
+            {
+                primero = nuevo;
+                nuevo->sig = primero;
+            }
+            else
+            {
+                NodoJugador *aux = primero;
+                while (aux->sig != primero)
+                    aux = aux->sig;
 
-    pausa();
-}
+                aux->sig = nuevo;
+                nuevo->sig = primero;
+            }
 
-void listaJugadores() //Funcion para mostrar listado de jugadores inscritos
+            cout << "\nDesea agregar otro jugador? (s/n): ";
+            cin >> opcion;
+            cin.ignore();
+
+        } while (opcion == 's' || opcion == 'S');
+
+        pausa();
+    }
+
+    void listaJugadores() // Funcion para mostrar listado de jugadores inscritos
     {
         limpiar();
         cout << "LISTADO DE JUGADORES\n";
@@ -173,7 +173,7 @@ void listaJugadores() //Funcion para mostrar listado de jugadores inscritos
         pausa();
     }
 
-      void liberarMemoria() //Función para liberar memoria
+    void liberarMemoria() // Función para liberar memoria
     {
         if (!primero)
             return;
