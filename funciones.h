@@ -17,4 +17,15 @@ struct NodoJugador
     NodoJugador *sig;
 };
 
+class GamePPT
+{
+private:
+    NodoJugador *primero;
+
+public:
+    GamePPT()
+    {
+        primero = NULL;
+    }
+};
 #endif
