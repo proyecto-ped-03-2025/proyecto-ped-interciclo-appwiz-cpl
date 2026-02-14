@@ -84,65 +84,65 @@ public:
         return "Tijera";
     }
 
-void inscribirJugador() //Función para inscripción de jugadores
+void inscribirJugador() //Función para inscribir jugadores
+{
+    char opcion;
+
+    do
     {
-        char opcion;
-        cin.ignore();
+        limpiar();
+        cout << "INSCRIPCION DE JUGADORES\n";
+        cout << "========================\n";
 
-        do
+        NodoJugador *nuevo = new NodoJugador;
+
+        cout << "Ingrese el nombre del jugador: ";
+        getline(cin, nuevo->nombre);
+
+        if (nuevo->nombre.empty())
         {
-            limpiar();
-            cout << "INSCRIPCION DE JUGADORES\n";
-            cout << "========================\n";
+            cout << "Nombre invalido.\n";
+            delete nuevo;
+            pausa();
+            return;
+        }
 
-            NodoJugador *nuevo = new NodoJugador;
+        cout << "Ingrese el ID del jugador: ";
+        cin >> nuevo->id;
 
-            cout << "Ingrese el nombre del jugador: ";
-            getline(cin, nuevo->nombre);
+        if (idExiste(nuevo->id))
+        {
+            cout << "ID ya existente.\n";
+            delete nuevo;
+            pausa();
+            return;
+        }
 
-            if (nuevo->nombre.empty())
-            {
-                cout << "Nombre invalido.\n";
-                delete nuevo;
-                pausa();
-                return;
-            }
+        nuevo->puntos = 0;
 
-            cout << "Ingrese el ID del jugador: ";
-            cin >> nuevo->id;
-            
-             if (idExiste(nuevo->id))
-            {
-                cout << "ID ya existente.\n";
-                delete nuevo;
-                pausa();
-                return;
-            }
-            nuevo->puntos = 0;
+        if (!primero)
+        {
+            primero = nuevo;
+            nuevo->sig = primero;
+        }
+        else
+        {
+            NodoJugador *aux = primero;
+            while (aux->sig != primero)
+                aux = aux->sig;
 
-            if (!primero)
-            {
-                primero = nuevo;
-                nuevo->sig = primero;
-            }
-            else
-            {
-                NodoJugador *aux = primero;
-                while (aux->sig != primero)
-                    aux = aux->sig;
+            aux->sig = nuevo;
+            nuevo->sig = primero;
+        }
 
-                aux->sig = nuevo;
-                nuevo->sig = primero;
-            }
+        cout << "\nDesea agregar otro jugador? (s/n): ";
+        cin >> opcion;
+        cin.ignore();  // solo aquí
 
-            cout << "\nDesea agregar otro jugador? (s/n): ";
-            cin >> opcion;
-            cin.ignore();
+    } while (opcion == 's' || opcion == 'S');
 
-        } while (opcion == 's' || opcion == 'S');
-
-        pausa();
-    }
+    pausa();
+}
 
 void listaJugadores() //Funcion para mostrar listado de jugadores inscritos
     {
