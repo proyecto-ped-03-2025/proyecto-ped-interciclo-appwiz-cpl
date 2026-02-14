@@ -30,5 +30,22 @@ public:
 
 void limpiar() { system("cls"); } // Solo para Windows
 void pausa() { system("pause"); } // Solo para Windows
+
+void titulo()
+    {
+        cout << R"(
+██████╗ ██╗███████╗██████╗ ██████╗ 
+██╔══██╗██║██╔════╝██╔══██╗██╔══██╗
+██████╔╝██║█████╗  ██║  ██║██████╔╝
+██╔═══╝ ██║██╔══╝  ██║  ██║██╔══██╗
+██║     ██║███████╗██████╔╝██║  ██║
+╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝
+)";
+    }
+
+    void piedra() { cout << " [ PIEDRA ]\n"; }
+    void papel() { cout << " [ PAPEL ]\n"; }
+    void tijera() { cout << " [ TIJERA ]\n"; }
+
 };
 #endif
