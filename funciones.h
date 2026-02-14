@@ -118,5 +118,32 @@ void inscribirJugador() //Función para inscripción de jugadores
 
         pausa();
     }
+
+void listaJugadores() //Funcion para mostrar listado de jugadores inscritos
+    {
+        limpiar();
+        cout << "LISTADO DE JUGADORES\n";
+        cout << "====================\n";
+
+        if (!primero)
+        {
+            cout << "No hay jugadores.\n";
+            pausa();
+            return;
+        }
+
+        NodoJugador *aux = primero;
+        do
+        {
+            cout << aux->nombre
+                 << " | ID: " << aux->id
+                 << " | Puntaje: " << aux->puntos << endl;
+
+            aux = aux->sig;
+
+        } while (aux != primero);
+
+        pausa();
+    }
 };
 #endif
