@@ -27,5 +27,8 @@ public:
     {
         primero = NULL;
     }
+
+void limpiar() { system("cls"); } // Solo para Windows
+void pausa() { system("pause"); } // Solo para Windows
 };
 #endif
