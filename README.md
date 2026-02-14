@@ -61,8 +61,7 @@ struct NodoJugador {
 ✔ Memoria dinámica (`new` y `delete`)  
 ✔ Lista enlazada circular  
 ✔ Validación de datos  
-✔ Manejo de archivos
-✔ Generación de números aleatorios (`rand`)  
+✔ Manejo de archivos 
 ✔ Modularización con archivos `.h` y `.cpp`  
 
 ---
@@ -92,7 +91,7 @@ struct NodoJugador {
    ```bash
    g++ gamePPT.cpp -o gamePPT
    
-4. Ejecutar el programa
+4. Ejecuta el juego
    ```bash
    ./gamePPT
 
@@ -118,5 +117,5 @@ system("cls");
 system("pause");
 ```
 
-Por lo tanto, estas funciones funcionan correctamente en Windows.  
+Por lo tanto, estas funciones funcionan correctamente en el sistema operativo de Windows.  
 En otros sistemas operativos pueden requerir adaptación.
