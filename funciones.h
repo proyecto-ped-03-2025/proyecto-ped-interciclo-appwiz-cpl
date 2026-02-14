@@ -22,6 +22,24 @@ class GamePPT
 private:
     NodoJugador *primero;
 
+     bool idExiste(string idBuscado)
+    {
+        if (!primero)
+            return false;
+
+        NodoJugador *aux = primero;
+        do
+        {
+            if (aux->id == idBuscado)
+                return true;
+
+            aux = aux->sig;
+
+        } while (aux != primero);
+
+        return false;
+    }
+
 public:
     GamePPT()
     {
