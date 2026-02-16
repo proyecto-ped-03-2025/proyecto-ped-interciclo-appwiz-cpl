@@ -247,6 +247,8 @@ public:
             }
 
             i = i->sig;
+     } while (i != primero);
+    }
 
 
 
