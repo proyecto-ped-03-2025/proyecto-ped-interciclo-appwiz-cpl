@@ -200,6 +200,12 @@ public:
             pausa();
             return;
         }
+  NodoJugador *i = primero;
+
+        do
+        {
+            NodoJugador *j = i->sig;
+
 
 
 #endif
