@@ -267,6 +267,15 @@ public:
                 ganador = aux;
 
             aux = aux->sig;
+ } while (aux != primero);
+
+        limpiar();
+        cout << "GANADOR DEL TORNEO\n";
+        cout << "==================\n";
+        cout << ganador->nombre
+             << " con " << ganador->puntos
+             << " puntos.\n";
+
 
 
 
