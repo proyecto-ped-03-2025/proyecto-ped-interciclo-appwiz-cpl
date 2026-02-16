@@ -226,6 +226,22 @@ public:
                 mostrarJugada(b);
 
                 int r = resultado(a, b);
+ if (r == 1)
+                {
+                    cout << "\nGANA " << i->nombre << " (+3 puntos)\n";
+                    i->puntos += 3;
+                }
+                else if (r == -1)
+                {
+                    cout << "\nGANA " << j->nombre << " (+3 puntos)\n";
+                    j->puntos += 3;
+                }
+                else
+                {
+                    cout << "\nEMPATE (+1 punto cada uno)\n";
+                    i->puntos++;
+                    j->puntos++;
+                }
 
 
 
