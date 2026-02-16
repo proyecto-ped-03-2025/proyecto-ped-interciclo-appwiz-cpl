@@ -191,5 +191,15 @@ public:
         primero = NULL;
     }
 };
+// ================= JUEGO =================
+    void ejecutarJuego()
+    {
+        if (!primero || primero->sig == primero)
+        {
+            cout << "Se necesitan minimo 2 jugadores.\n";
+            pausa();
+            return;
+        }
+
 
 #endif
