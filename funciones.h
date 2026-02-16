@@ -275,6 +275,8 @@ public:
         cout << ganador->nombre
              << " con " << ganador->puntos
              << " puntos.\n";
+               pausa();
+    }
 
 
 
