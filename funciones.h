@@ -258,6 +258,16 @@ public:
             pausa();
             return;
         }
+ NodoJugador *aux = primero;
+        NodoJugador *ganador = primero;
+
+        do
+        {
+            if (aux->puntos > ganador->puntos)
+                ganador = aux;
+
+            aux = aux->sig;
+
 
 
 
