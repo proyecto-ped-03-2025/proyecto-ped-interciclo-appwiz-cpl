@@ -215,6 +215,19 @@ public:
                 int a = rand() % 3;
                 int b = rand() % 3;
 
+                           limpiar();
+
+                cout << i->nombre << " eligio:\n";
+                mostrarJugada(a);
+
+                cout << "\nVS\n\n";
+
+                cout << j->nombre << " eligio:\n";
+                mostrarJugada(b);
+
+                int r = resultado(a, b);
+
+
 
 
 
