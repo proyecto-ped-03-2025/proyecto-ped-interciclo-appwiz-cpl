@@ -242,6 +242,11 @@ public:
                     i->puntos++;
                     j->puntos++;
                 }
+            pausa();
+                j = j->sig;
+            }
+
+            i = i->sig;
 
 
 
