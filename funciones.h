@@ -205,6 +205,16 @@ public:
         do
         {
             NodoJugador *j = i->sig;
+       while (j != primero)
+            {
+                limpiar();
+                cout << i->nombre << " VS " << j->nombre << endl;
+                cout << "Presione ENTER para jugar...";
+                cin.get();
+
+                int a = rand() % 3;
+                int b = rand() % 3;
+
 
 
 
