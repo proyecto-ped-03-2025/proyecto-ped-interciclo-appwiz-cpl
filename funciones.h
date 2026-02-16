@@ -249,6 +249,15 @@ public:
             i = i->sig;
      } while (i != primero);
     }
+ // ================= GANADOR =================
+    void mostrarGanador()
+    {
+        if (!primero)
+        {
+            cout << "No hay jugadores.\n";
+            pausa();
+            return;
+        }
 
 
 
