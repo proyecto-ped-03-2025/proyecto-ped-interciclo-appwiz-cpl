@@ -190,8 +190,21 @@ public:
         delete primero;
         primero = NULL;
     }
-};
-// ================= JUEGO =================
+
+    int resultado(int a, int b)
+    {
+        if (a == b)
+            return 0; // empate
+
+        if ((a == 0 && b == 2) || // piedra gana a tijera
+            (a == 1 && b == 0) || // papel gana a piedra
+            (a == 2 && b == 1))   // tijera gana a papel
+            return 1;             // gana jugador i
+
+        return -1; // gana jugador j
+    }
+
+    // ================= JUEGO =================
     void ejecutarJuego()
     {
         if (!primero || primero->sig == primero)
@@ -200,12 +213,12 @@ public:
             pausa();
             return;
         }
-  NodoJugador *i = primero;
+        NodoJugador *i = primero;
 
         do
         {
             NodoJugador *j = i->sig;
-       while (j != primero)
+            while (j != primero)
             {
                 limpiar();
                 cout << i->nombre << " VS " << j->nombre << endl;
@@ -215,7 +228,7 @@ public:
                 int a = rand() % 3;
                 int b = rand() % 3;
 
-                           limpiar();
+                limpiar();
 
                 cout << i->nombre << " eligio:\n";
                 mostrarJugada(a);
@@ -226,7 +239,7 @@ public:
                 mostrarJugada(b);
 
                 int r = resultado(a, b);
- if (r == 1)
+                if (r == 1)
                 {
                     cout << "\nGANA " << i->nombre << " (+3 puntos)\n";
                     i->puntos += 3;
@@ -242,14 +255,14 @@ public:
                     i->puntos++;
                     j->puntos++;
                 }
-            pausa();
+                pausa();
                 j = j->sig;
             }
 
             i = i->sig;
-     } while (i != primero);
+        } while (i != primero);
     }
- // ================= GANADOR =================
+    // ================= GANADOR =================
     void mostrarGanador()
     {
         if (!primero)
@@ -258,7 +271,7 @@ public:
             pausa();
             return;
         }
- NodoJugador *aux = primero;
+        NodoJugador *aux = primero;
         NodoJugador *ganador = primero;
 
         do
@@ -267,7 +280,7 @@ public:
                 ganador = aux;
 
             aux = aux->sig;
- } while (aux != primero);
+        } while (aux != primero);
 
         limpiar();
         cout << "GANADOR DEL TORNEO\n";
@@ -275,13 +288,75 @@ public:
         cout << ganador->nombre
              << " con " << ganador->puntos
              << " puntos.\n";
-               pausa();
+        pausa();
     }
 
+    // ================= AYUDA =================
+    void ayuda()
+    {
+        limpiar();
+        cout << R"(
+
+--JUGABILIDAD--
+
+Cada jugador tendrá un nombre, ID único (o carnet) y un puntaje que inicia en 0,
+pero después de cada partida se le asignará puntaje.
+
+Se registrarán un mínimo de 2 jugadores. Cada jugador se enfrentará a todos los
+demás jugadores sin repetición. El programa asignará aleatoriamente si es
+piedra, papel o tijera.
+
+Al finalizar todos los enfrentamientos entre los jugadores se declarará al
+ganador en base a quien obtuvo el mayor puntaje.
 
 
+--REGLAS--
+
+Cada jugador deberá ingresar con un nombre y un ID (o carnet) que no esté en uso.
+Debe existir un mínimo de 2 jugadores para poder iniciar el juego.
 
 
+--OPCIONES DEL MENU--
 
+- Agregar Jugadores:
+  Aquí se ingresa el nombre y ID (o carnet) de cada jugador.
 
+- Ver lista de jugadores:
+  Se muestran los jugadores inscritos.
+
+- Iniciar juego:
+  Se comienzan las partidas de cada jugador contra todos los demás y se asignan
+  los puntajes correspondientes a cada jugador.
+
+- Puntajes y ganador:
+  Al finalizar todas las partidas se mostrará al ganador que obtuvo mayor puntaje.
+
+- Ayuda:
+  Se explica la jugabilidad del juego, las reglas y las opciones del menú principal.
+
+- Integrantes:
+  Nombre y carnet de los integrantes del equipo de diseño y creación del juego.
+
+)";
+
+        pausa();
+    }
+
+    // ================= INTEGRANTES =================
+    void integrantes()
+    {
+        limpiar();
+        cout << "INTEGRANTES\n";
+        cout << "===========\n";
+        cout << R"(
+        Nombre: Barrera Gómez, Heraldo Riquelmy. Carnet: 00226325
+
+        Nombre: Escobar Menjivar, Jorge Alberto. Carnet: 00072325
+
+        Nombre: Escobar Arteaga, Rosario Guadalupe Carnet: 00235325
+    )";
+    
+        pausa();
+    }
+};
 #endif
