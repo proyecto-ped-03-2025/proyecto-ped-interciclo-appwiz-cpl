@@ -19,7 +19,8 @@ int main()
         cout << "3. Iniciar juego\n";
         cout << "4. Ver ganador\n";
         cout << "5. Ayuda\n";
-        cout << "6. Salir\n";
+        cout << "6. Integrantes\n";
+        cout << "7. Salir\n";
         cout << "Seleccione opcion: ";
         cin >> opcion;
 
@@ -46,17 +47,20 @@ int main()
             break;
 
         case 6:
+            juego.integrantes();
+            break;
+
+        case 7:
             cout << "Saliendo...\n";
             juego.liberarMemoria();
             break;
-
 
         default:
             cout << "Opcion invalida\n";
             juego.pausa();
         }
 
-    } while (opcion != 6);
+    } while (opcion != 7);
 
     return 0;
 }

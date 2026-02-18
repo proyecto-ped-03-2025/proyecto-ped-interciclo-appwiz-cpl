@@ -338,7 +338,16 @@ Debe existir un mínimo de 2 jugadores para poder iniciar el juego.
   Nombre y carnet de los integrantes del equipo de diseño y creación del juego.
 
 )";
-        
+
+        pausa();
+    }
+
+    // ================= INTEGRANTES =================
+    void integrantes()
+    {
+        limpiar();
+        cout << "INTEGRANTES\n";
+        cout << "===========\n";
         pausa();
     }
 };
