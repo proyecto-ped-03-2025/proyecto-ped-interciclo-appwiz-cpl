@@ -295,8 +295,50 @@ public:
     void ayuda()
     {
         limpiar();
-        cout << "AYUDA\n";
-        cout << "================\n";
+        cout << R"(
+
+--JUGABILIDAD--
+
+Cada jugador tendrá un nombre, ID único (o carnet) y un puntaje que inicia en 0,
+pero después de cada partida se le asignará puntaje.
+
+Se registrarán un mínimo de 2 jugadores. Cada jugador se enfrentará a todos los
+demás jugadores sin repetición. El programa asignará aleatoriamente si es
+piedra, papel o tijera.
+
+Al finalizar todos los enfrentamientos entre los jugadores se declarará al
+ganador en base a quien obtuvo el mayor puntaje.
+
+
+--REGLAS--
+
+Cada jugador deberá ingresar con un nombre y un ID (o carnet) que no esté en uso.
+Debe existir un mínimo de 2 jugadores para poder iniciar el juego.
+
+
+--OPCIONES DEL MENU--
+
+- Agregar Jugadores:
+  Aquí se ingresa el nombre y ID (o carnet) de cada jugador.
+
+- Ver lista de jugadores:
+  Se muestran los jugadores inscritos.
+
+- Iniciar juego:
+  Se comienzan las partidas de cada jugador contra todos los demás y se asignan
+  los puntajes correspondientes a cada jugador.
+
+- Puntajes y ganador:
+  Al finalizar todas las partidas se mostrará al ganador que obtuvo mayor puntaje.
+
+- Ayuda:
+  Se explica la jugabilidad del juego, las reglas y las opciones del menú principal.
+
+- Integrantes:
+  Nombre y carnet de los integrantes del equipo de diseño y creación del juego.
+
+)";
+        
         pausa();
     }
 };
