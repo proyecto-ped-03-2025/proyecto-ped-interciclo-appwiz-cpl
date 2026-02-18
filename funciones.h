@@ -348,6 +348,14 @@ Debe existir un mínimo de 2 jugadores para poder iniciar el juego.
         limpiar();
         cout << "INTEGRANTES\n";
         cout << "===========\n";
+        cout << R"(
+        Nombre: Barrera Gómez, Heraldo Riquelmy. Carnet: 00226325
+
+        Nombre: Escobar Menjivar, Jorge Alberto. Carnet: 00072325
+
+        Nombre: Escobar Arteaga, Rosario Guadalupe Carnet: 00235325
+    )";
+    
         pausa();
     }
 };
