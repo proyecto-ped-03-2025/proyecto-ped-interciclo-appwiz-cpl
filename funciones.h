@@ -190,8 +190,22 @@ public:
         delete primero;
         primero = NULL;
     }
-};
-// ================= JUEGO =================
+
+    int resultado(int a, int b)
+{
+    if (a == b)
+        return 0;   // empate
+
+    if ((a == 0 && b == 2) ||   // piedra gana a tijera
+        (a == 1 && b == 0) ||   // papel gana a piedra
+        (a == 2 && b == 1))     // tijera gana a papel
+        return 1;   // gana jugador i
+
+    return -1;      // gana jugador j
+}
+
+
+    // ================= JUEGO =================
     void ejecutarJuego()
     {
         if (!primero || primero->sig == primero)
@@ -200,12 +214,12 @@ public:
             pausa();
             return;
         }
-  NodoJugador *i = primero;
+        NodoJugador *i = primero;
 
         do
         {
             NodoJugador *j = i->sig;
-       while (j != primero)
+            while (j != primero)
             {
                 limpiar();
                 cout << i->nombre << " VS " << j->nombre << endl;
@@ -215,7 +229,7 @@ public:
                 int a = rand() % 3;
                 int b = rand() % 3;
 
-                           limpiar();
+                limpiar();
 
                 cout << i->nombre << " eligio:\n";
                 mostrarJugada(a);
@@ -226,7 +240,7 @@ public:
                 mostrarJugada(b);
 
                 int r = resultado(a, b);
- if (r == 1)
+                if (r == 1)
                 {
                     cout << "\nGANA " << i->nombre << " (+3 puntos)\n";
                     i->puntos += 3;
@@ -242,14 +256,14 @@ public:
                     i->puntos++;
                     j->puntos++;
                 }
-            pausa();
+                pausa();
                 j = j->sig;
             }
 
             i = i->sig;
-     } while (i != primero);
+        } while (i != primero);
     }
- // ================= GANADOR =================
+    // ================= GANADOR =================
     void mostrarGanador()
     {
         if (!primero)
@@ -258,7 +272,7 @@ public:
             pausa();
             return;
         }
- NodoJugador *aux = primero;
+        NodoJugador *aux = primero;
         NodoJugador *ganador = primero;
 
         do
@@ -267,7 +281,7 @@ public:
                 ganador = aux;
 
             aux = aux->sig;
- } while (aux != primero);
+        } while (aux != primero);
 
         limpiar();
         cout << "GANADOR DEL TORNEO\n";
@@ -275,13 +289,7 @@ public:
         cout << ganador->nombre
              << " con " << ganador->puntos
              << " puntos.\n";
-               pausa();
+        pausa();
     }
-
-
-
-
-
-
-
+};
 #endif
