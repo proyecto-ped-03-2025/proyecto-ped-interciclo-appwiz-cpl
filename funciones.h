@@ -21,6 +21,7 @@ class GamePPT
 {
 private:
     NodoJugador *primero;
+    const string archivoRegistro = "registro.txt";
 
     bool idExiste(string idBuscado)
     {
@@ -40,6 +41,60 @@ private:
         return false;
     }
 
+    bool abrirRegistro(ofstream &archivo, ios::openmode modo)
+    {
+        archivo.open(archivoRegistro.c_str(), modo);
+        return archivo.is_open();
+    }
+
+    void guardarRegistroJugadores()
+    {
+        ofstream archivo;
+        if (!abrirRegistro(archivo, ios::out))
+            return;
+
+        archivo << "\n=== JUGADORES REGISTRADOS ===\n";
+
+        if (!primero)
+        {
+            archivo << "No hay jugadores.\n";
+            archivo.close();
+            return;
+        }
+
+        NodoJugador *aux = primero;
+        do
+        {
+            archivo << aux->nombre
+                    << " | ID: " << aux->id
+                    << " | Puntaje: " << aux->puntos << "\n";
+            aux = aux->sig;
+        } while (aux != primero);
+
+        archivo.close();
+    }
+
+    void guardarRegistroGanador(NodoJugador *ganador)
+    {
+        ofstream archivo;
+        if (!abrirRegistro(archivo, ios::app))
+            return;
+
+        archivo << "\n=== GANADOR DEL TORNEO ===\n";
+        if (ganador)
+        {
+            archivo << ganador->nombre
+                    << " | ID: " << ganador->id
+                    << " | Puntaje: " << ganador->puntos << "\n";
+        }
+        else
+        {
+            archivo << "No hay ganador.\n";
+        }
+
+        archivo.close();
+    }
+
 public:
     GamePPT()
     {
@@ -49,17 +104,23 @@ public:
     void limpiar() { system("cls"); } // Solo para Windows
     void pausa() { system("pause"); } // Solo para Windows
 
-    void titulo()
-    {
-        cout << R"(
-██████╗ ██╗███████╗██████╗ ██████╗ 
-██╔══██╗██║██╔════╝██╔══██╗██╔══██╗
-██████╔╝██║█████╗  ██║  ██║██████╔╝
-██╔═══╝ ██║██╔══╝  ██║  ██║██╔══██╗
-██║     ██║███████╗██████╔╝██║  ██║
-╚═╝     ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝
-)";
-    }
+        void titulo()
+        {
+            cout << R"(
+    ===========================================================
+                PIEDRA  PAPEL  TIJERA
+    ===========================================================
+          ____     ____      _____   _____  _____
+         |  _ \   |  _ \    |  __ \ |  __ \|  __ \
+         | |_) |  | |_) |   | |__) || |__) | |__) |
+         |  __/   |  __/    |  ___/ |  ___/|  ___/
+         | |      | |       | |     | |    | |
+         |_|      |_|       |_|     |_|    |_|
+
+            TORNEO PIEDRA, PAPEL Y TIJERAS
+    ===========================================================
+    )";
+        }
 
     void piedra() { cout << " [ PIEDRA ]\n"; }
     void papel() { cout << " [ PAPEL ]\n"; }
@@ -142,6 +203,8 @@ public:
             cin.ignore();
 
         } while (opcion == 's' || opcion == 'S');
+
+        guardarRegistroJugadores();
 
         pausa();
     }
@@ -288,6 +351,8 @@ public:
         cout << ganador->nombre
              << " con " << ganador->puntos
              << " puntos.\n";
+
+           guardarRegistroGanador(ganador);
         pausa();
     }
 
