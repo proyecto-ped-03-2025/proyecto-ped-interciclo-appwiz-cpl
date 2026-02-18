@@ -192,18 +192,17 @@ public:
     }
 
     int resultado(int a, int b)
-{
-    if (a == b)
-        return 0;   // empate
+    {
+        if (a == b)
+            return 0; // empate
 
-    if ((a == 0 && b == 2) ||   // piedra gana a tijera
-        (a == 1 && b == 0) ||   // papel gana a piedra
-        (a == 2 && b == 1))     // tijera gana a papel
-        return 1;   // gana jugador i
+        if ((a == 0 && b == 2) || // piedra gana a tijera
+            (a == 1 && b == 0) || // papel gana a piedra
+            (a == 2 && b == 1))   // tijera gana a papel
+            return 1;             // gana jugador i
 
-    return -1;      // gana jugador j
-}
-
+        return -1; // gana jugador j
+    }
 
     // ================= JUEGO =================
     void ejecutarJuego()
@@ -289,6 +288,15 @@ public:
         cout << ganador->nombre
              << " con " << ganador->puntos
              << " puntos.\n";
+        pausa();
+    }
+
+    // ================= AYUDA =================
+    void ayuda()
+    {
+        limpiar();
+        cout << "AYUDA\n";
+        cout << "================\n";
         pausa();
     }
 };
